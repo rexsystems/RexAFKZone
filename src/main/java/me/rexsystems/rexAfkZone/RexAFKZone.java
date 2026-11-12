@@ -10,9 +10,12 @@ import me.rexsystems.rexAfkZone.zone.Selections;
 import me.rexsystems.rexAfkZone.zone.ZoneStore;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.PluginCommand;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class RexAFKZone extends JavaPlugin {
+
+    private static final int BSTATS_PLUGIN_ID = 35265;
 
     private ConfigManager configManager;
     private ZoneStore zoneStore;
@@ -45,6 +48,7 @@ public final class RexAFKZone extends JavaPlugin {
         }
 
         ticker.start();
+        new Metrics(this, BSTATS_PLUGIN_ID);
         getLogger().info("RexAFKZone enabled.");
     }
 
