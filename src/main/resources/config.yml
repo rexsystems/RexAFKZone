@@ -1,0 +1,93 @@
+# RexAFKZone configuration
+# Messages accept MiniMessage, legacy & codes, &#RRGGBB, and #RRGGBB.
+# Inserted names are literal. Color belongs in the template.
+# zones.yml is player data. This file never replaces it.
+
+config-version: 1
+
+settings:
+  enabled: true
+  # Seconds the player must stand still before a zone counts time. 0 counts every second inside.
+  idle-seconds: 0
+  # Blocks from the last idle reset. A slow walk crosses it. Comparing only to the previous tick would not.
+  idle-move-blocks: 0.35
+  # Times each reward in a zone is rolled when an interval finishes. A zone can set its own rolls.
+  rolls: 1
+  default-interval-seconds: 60
+  default-priority: 0
+  default-bossbar: true
+  default-actionbar: true
+  default-chat: true
+
+worlds:
+  # If this list is not empty, time is counted only in these worlds.
+  enabled: []
+  disabled: []
+
+wand:
+  material: BLAZE_ROD
+  name: "<#f75634>Zone wand"
+  lore:
+    - "<gray>Left click: position 1"
+    - "<gray>Right click: position 2"
+
+sound:
+  enabled: true
+  # Bukkit sound names. An empty name skips that sound.
+  select: BLOCK_NOTE_BLOCK_HAT
+  reward: ENTITY_EXPERIENCE_ORB_PICKUP
+  volume: 1.0
+  pitch: 1.0
+
+defaults:
+  # Copied onto a zone when it is created. Edit zones.yml after that.
+  rewards:
+    - chance: 100
+      message: "<green>You received an AFK reward."
+      commands: []
+      items:
+        - material: GOLD_NUGGET
+          amount: 1
+          name: ""
+          lore: []
+          custom-model-data: 0
+
+messages:
+  prefix: "<gray>[<#f75634>RexAFKZone<gray>] "
+  no-permission: "{prefix}<red>You do not have permission to do that."
+  players-only: "{prefix}<red>Only players can do that."
+  reload: "{prefix}<green>Configuration reloaded."
+  save-failed: "{prefix}<red>Could not write zones.yml."
+  help-header: "{prefix}<white>RexAFKZone"
+  help:
+    - "<gray>/rexafkzone help <dark_gray>- <white>Show this help"
+    - "<gray>/rexafkzone wand <dark_gray>- <white>Give yourself the selection wand"
+    - "<gray>/rexafkzone create <name> <dark_gray>- <white>Create a zone from your selection"
+    - "<gray>/rexafkzone delete <name> <dark_gray>- <white>Delete a zone"
+    - "<gray>/rexafkzone list <dark_gray>- <white>List zones"
+    - "<gray>/rexafkzone info [name] <dark_gray>- <white>Show a zone"
+    - "<gray>/rexafkzone reload <dark_gray>- <white>Reload config and zones"
+  wand-given: "{prefix}<green>Selection wand given. Left click sets position 1. Right click sets position 2."
+  wand-invalid: "{prefix}<red>The wand material in config.yml is not an item."
+  pos1-set: "{prefix}<green>Position 1 set to <white>{x} {y} {z} <gray>in <white>{world}<green>."
+  pos2-set: "{prefix}<green>Position 2 set to <white>{x} {y} {z} <gray>in <white>{world}<green>."
+  selection-worlds: "{prefix}<red>Both positions have to be in the same world."
+  selection-missing: "{prefix}<red>Set both positions with the wand first."
+  zone-created: "{prefix}<green>Created <white>{zone} <gray>in {world} from <white>{min} <gray>to <white>{max}<green>."
+  zone-exists: "{prefix}<red>A zone named <white>{zone} <red>already exists."
+  zone-deleted: "{prefix}<green>Deleted <white>{zone}<green>."
+  zone-missing: "{prefix}<red>No zone named <white>{zone}<red>."
+  name-invalid: "{prefix}<red>Use 1 to 32 letters, numbers, or underscores."
+  usage-create: "{prefix}<gray>Usage: <white>/rexafkzone create <name>"
+  usage-delete: "{prefix}<gray>Usage: <white>/rexafkzone delete <name>"
+  usage-info: "{prefix}<gray>Usage: <white>/rexafkzone info <name>"
+  list-header: "{prefix}<white>Zones <gray>({count})"
+  list-line: "<gray>- <white>{zone} <dark_gray>{world} <gray>priority {priority}"
+  list-empty: "{prefix}<gray>No zones yet."
+  info-header: "{prefix}<white>{zone}"
+  info-line: "<gray>{key}: <white>{value}"
+  not-in-zone: "{prefix}<gray>You are not inside a zone. Use <white>/rexafkzone info <name><gray>."
+  reward: "{prefix}<green>Reward from <white>{zone}<green>."
+  bossbar: "<white>{zone} <gray>{left}s"
+  actionbar: "<gray>{zone} <dark_gray>{progress}<gray>/<white>{interval}s"
+  idle: "<gray>{zone} <dark_gray>stand still to count time"

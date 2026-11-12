@@ -1,0 +1,29 @@
+name: RexAFKZone
+version: '${project.version}'
+main: me.rexsystems.rexAfkZone.RexAFKZone
+api-version: '1.21'
+folia-supported: true
+authors: [RexSystems]
+description: AFK reward zones for Paper servers
+website: https://rexsystems.me
+softdepend: [PlaceholderAPI]
+
+commands:
+  rexafkzone:
+    description: RexAFKZone command
+    aliases: [rafk, afkzone]
+    usage: /rexafkzone <help|wand|create|delete|list|info|reload>
+
+permissions:
+  rexafkzone.use:
+    description: Receive rewards while inside an AFK zone
+    default: true
+  rexafkzone.select:
+    description: Use the selection wand
+    default: op
+  rexafkzone.admin:
+    description: Create, delete, list, and inspect zones
+    default: op
+  rexafkzone.reload:
+    description: Reload RexAFKZone
+    default: op
