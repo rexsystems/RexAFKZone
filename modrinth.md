@@ -42,4 +42,4 @@ Aliases: `/rafk`, `/afkzone`
 
 `zones.yml` is your zone data. An update does not overwrite it. `config.yml` gains missing keys and keeps a backup when that happens.
 
-Documentation: https://rexsystems.me/docs/rexafkzone
+Documentation: https://docs.rexsystems.me/rexafkzone/
